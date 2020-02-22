@@ -25,6 +25,6 @@ export function Grid(props) {
   }
 
   return <div className='grid' style={{width: width}}>
-  {{rowsArr}}
+  {rowsArr}
  </div>;
 }
