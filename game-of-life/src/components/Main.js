@@ -16,11 +16,7 @@ export function Main() {
   return (
     <div>
       <h1>The Game of Life</h1>
-      <Grid 
-        gridFull={gridFull}
-        rows={rows}
-        cols={cols}
-      />
+      <Grid gridFull={gridFull} rows={rows} cols={cols} />
       <h2>Generations: {generation}</h2>
     </div>
   );
