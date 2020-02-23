@@ -6,25 +6,28 @@ export function Main() {
   let rows = 30;
   let cols = 50;
 
-  let selectBox = () => console.log('Do the thing!');
-
   const [generation] = useState(0);
-  const [gridFull] = useState(
+  const [gridFull, updateGrid] = useState(
     Array(rows)
       .fill()
       .map(() => Array(cols).fill(false))
   );
 
+  const selectBox = (row, col) => {
+    let gridCopy = arrayClone(gridFull);
+    gridCopy[row][col] = !gridCopy[row][col];
+    updateGrid(gridCopy);
+  };
+
   return (
     <div>
       <h1>The Game of Life</h1>
-      <Grid
-        gridFull={gridFull}
-        rows={rows}
-        cols={cols}
-        selectBox={selectBox}
-      />
+      <Grid gridFull={gridFull} rows={rows} cols={cols} selectBox={selectBox} />
       <h2>Generations: {generation}</h2>
     </div>
   );
 }
+
+const arrayClone = arr => {
+  return JSON.parse(JSON.stringify(arr));
+};
