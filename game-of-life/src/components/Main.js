@@ -20,12 +20,10 @@ export function Main() {
   };
 
   const seed = () => {
-    console.log("seed!");
     let gridCopy = arrayClone(gridFull);
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         if (Math.floor(Math.random() * 4) === 1) {
-          console.log("random");
           gridCopy[i][j] = true;
         }
       }
@@ -33,7 +31,9 @@ export function Main() {
     updateGrid(gridCopy);
   };
 
-  // useEffect(() => seed());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => seed(), []);
+  // Check against an empty array to ensure useEffect only runs once!
 
   return (
     <div>
